@@ -1,0 +1,102 @@
+type User {
+	id: Int
+	name: String
+	email: String
+	username: String	
+}
+type Word {
+	id: Int
+	title: String
+	author: String
+	image: String
+	content: String
+	deleteAt: String
+}
+type NestedWord {
+	id: Int
+	title: String
+	author: String
+	image: String
+	content: String
+	deleteAt: String
+	comments: [Comment1]
+}
+type Comment1 {
+	id: Int
+	name: String
+	comment: String
+	idword: Int
+	replyid: Int
+	replystatus: Int
+	showstatus: Int
+	comments: [Comment2]
+}
+type Comment2 {
+	id: Int
+	name: String
+	comment: String
+	idword: Int
+	replyid: Int
+	replystatus: Int
+	showstatus: Int
+	comments: [Comment3]
+}
+type Comment3 {
+	id: Int
+	name: String
+	comment: String
+	idword: Int
+	replyid: Int
+	replystatus: Int
+	showstatus: Int
+	comments: [Comment4]
+}
+type Comment4 {
+	id: Int
+	name: String
+	comment: String
+	idword: Int
+	replyid: Int
+	replystatus: Int
+	showstatus: Int
+	comments: [Comment5]
+}
+type Comment5 {
+	id: Int
+	name: String
+	comment: String
+	idword: Int
+	replyid: Int
+	replystatus: Int
+	showstatus: Int
+	comments: [Comment]
+}
+type Comment {
+	id: Int
+	name: String
+	comment: String
+	idword: Int
+	replyid: Int
+	replystatus: Int
+	showstatus: Int
+}
+
+type Token {
+	token: String
+	expired: String	
+}
+type Query {
+	users: [User]
+	words: [Word]
+	comments: [Comment]
+}
+type Mutation {
+	register(name: String, email:String,username: String, password: String): User,
+	login(username: String, password: String): Token,
+	addNews(title: String, author: String, image: String, content: String): Word,
+	detailNews(id: Int): NestedWord,
+	updateNews(id: Int, title: String, author: String, image: String, content: String): Word,
+	deleteNews(id: Int): Word,
+	restoreNews(id: Int): Word,
+	addComment(name: String, comment: String, idword: Int, replyid: Int): Comment,
+}
